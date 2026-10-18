@@ -55,24 +55,13 @@ namespace MesaDePartes
             Console.ReadKey();
         }
 
-        // Lee un entero desde consola; repite hasta que el valor sea válido
-        static int LeerEntero()
-        {
-            int valor;
-            while (!int.TryParse(Console.ReadLine(), out valor))
-            {
-                Console.WriteLine("Ingrese un número entero válido: ");
-            }
-            return valor;
-        }
-
         static void LlenarArreglos(int[] codigos, string[] solicitantes, string[] dnis, string[] tramites, int n)
         {
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("--- Expediente N° " + (i + 1) + " ---");
                 Console.WriteLine("Ingrese el código del expediente (Ej: 202601): ");
-                codigos[i] = LeerEntero();
+                codigos[i] = Validacion.LeerEntero();
                 Console.WriteLine("Ingrese el nombre del solicitante: ");
                 solicitantes[i] = Console.ReadLine();
 
@@ -108,7 +97,7 @@ namespace MesaDePartes
             bool encontrado = false;
 
             Console.WriteLine("Ingrese el código exacto que desea buscar: ");
-            int codigoBuscado = LeerEntero();
+            int codigoBuscado = Validacion.LeerEntero();
 
             for (int i = 0; i < n; i++)
             {
@@ -131,7 +120,7 @@ namespace MesaDePartes
         static void InsertarExpediente(int[] codigos, string[] solicitantes, string[] dnis, string[] tramites, int n)
         {
             Console.WriteLine("Ingrese la posición donde desea insertar: ");
-            int posicion = LeerEntero();
+            int posicion = Validacion.LeerEntero();
 
             posicion = posicion - 1;
 
@@ -151,7 +140,7 @@ namespace MesaDePartes
                 }
 
                 Console.WriteLine("Ingrese el código del nuevo expediente: ");
-                codigos[posicion] = LeerEntero();
+                codigos[posicion] = Validacion.LeerEntero();
                 Console.WriteLine("Ingrese el nombre del solicitante: ");
                 solicitantes[posicion] = Console.ReadLine();
 
@@ -173,7 +162,7 @@ namespace MesaDePartes
         static void EliminarExpediente(int[] codigos, string[] solicitantes, string[] dnis, string[] tramites, int n)
         {
             Console.WriteLine("Ingrese la posición a eliminar: ");
-            int posicion = LeerEntero();
+            int posicion = Validacion.LeerEntero();
 
             posicion = posicion - 1;
 
